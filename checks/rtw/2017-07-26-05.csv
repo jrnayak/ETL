@@ -1,0 +1,3 @@
+unix_timestamp,applicant_id,applicant_employer,applicant_nationality,is_eligble
+1501043799,1,2,1,true
+1501044312,3,3,2,false
