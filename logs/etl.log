@@ -176,3 +176,7 @@ pyspark.sql.utils.AnalysisException: "cannot resolve '`3`' given input columns: 
 [2019-12-03 23:01:30,753] - INFO - Hour 2017-07-26-05 ETL Complete,elapsed time: 15s.
 [2019-12-03 23:01:30,753] - INFO - Hour 2017-07-26-06 ETL Start.
 [2019-12-03 23:01:35,073] - INFO - Hour 2017-07-26-06 ETL Complete,elapsed time: 19s.
+[2019-12-04 11:04:52,555] - INFO - Hour 2017-07-26-05 ETL Start.
+[2019-12-04 11:05:05,651] - INFO - Hour 2017-07-26-05 ETL Complete,elapsed time: 16s.
+[2019-12-04 11:05:05,651] - INFO - Hour 2017-07-26-06 ETL Start.
+[2019-12-04 11:05:10,337] - INFO - Hour 2017-07-26-06 ETL Complete,elapsed time: 21s.

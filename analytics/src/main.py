@@ -27,23 +27,23 @@ def main():
 
     checks, emp, ntl, output_path, rtw = validate_inputs(conf, logger)
 
+    # Reading applicant employer file
+    emp_schema = st.StructType(
+        [st.StructField('applicant_id', st.IntegerType()), st.StructField('applicant_employer', st.StringType())])
+    pd_emp = pd.read_json(emp)
+    df_emp = spark.createDataFrame(pd_emp, schema=emp_schema).repartition(num_partitions)
+    df_emp.show()
+
+    # Reading applicant nationality file
+    ntl_schema = st.StructType([st.StructField('applicant_id', st.IntegerType()),
+                                st.StructField('applicant_nationality', st.StringType())])
+    pd_ntl = pd.read_json(ntl)
+    df_ntl = spark.createDataFrame(pd_ntl, schema=ntl_schema).repartition(num_partitions)
+    df_ntl.show()
+
     for infile in sorted(os.listdir(conf.get('input', 'checks.identity'))):
         logger.info('Hour {0} ETL Start.'.format(os.path.splitext(infile)[0]))
         try:
-            # Reading applicant employer file
-            emp_schema = st.StructType(
-                [st.StructField('applicant_id', st.IntegerType()), st.StructField('applicant_employer', st.StringType())])
-            pd_emp = pd.read_json(emp)
-            df_emp = spark.createDataFrame(pd_emp, schema=emp_schema).repartition(num_partitions)
-            df_emp.show()
-
-            # Reading applicant nationality file
-            ntl_schema = st.StructType([st.StructField('applicant_id', st.IntegerType()),
-                                        st.StructField('applicant_nationality', st.StringType())])
-            pd_ntl = pd.read_json(ntl)
-            df_ntl = spark.createDataFrame(pd_ntl, schema=ntl_schema).repartition(num_partitions)
-            df_ntl.show()
-
             # Reading identity file
             identity_file = checks + infile
             df_identity = spark.read.format('csv').option("header", "true").load(identity_file).repartition(num_partitions)
