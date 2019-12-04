@@ -27,19 +27,23 @@ def main():
 
     checks, emp, ntl, output_path, rtw = validate_inputs(conf, logger)
 
-    # Reading applicant employer file
-    emp_schema = st.StructType(
-        [st.StructField('applicant_id', st.IntegerType()), st.StructField('applicant_employer', st.StringType())])
-    pd_emp = pd.read_json(emp)
-    df_emp = spark.createDataFrame(pd_emp, schema=emp_schema).repartition(num_partitions)
-    df_emp.show()
+    try:
+        # Reading applicant employer file
+        emp_schema = st.StructType(
+            [st.StructField('applicant_id', st.IntegerType()), st.StructField('applicant_employer', st.StringType())])
+        pd_emp = pd.read_json(emp)
+        df_emp = spark.createDataFrame(pd_emp, schema=emp_schema).repartition(num_partitions)
+        df_emp.show()
 
-    # Reading applicant nationality file
-    ntl_schema = st.StructType([st.StructField('applicant_id', st.IntegerType()),
-                                st.StructField('applicant_nationality', st.StringType())])
-    pd_ntl = pd.read_json(ntl)
-    df_ntl = spark.createDataFrame(pd_ntl, schema=ntl_schema).repartition(num_partitions)
-    df_ntl.show()
+        # Reading applicant nationality file
+        ntl_schema = st.StructType([st.StructField('applicant_id', st.IntegerType()),
+                                    st.StructField('applicant_nationality', st.StringType())])
+        pd_ntl = pd.read_json(ntl)
+        df_ntl = spark.createDataFrame(pd_ntl, schema=ntl_schema).repartition(num_partitions)
+        df_ntl.show()
+
+    except (FileNotFoundError, IOError, BaseException):
+        logger.error('reading metadata files  \nTrace: {0}'.format(traceback.format_exc()))
 
     for infile in sorted(os.listdir(conf.get('input', 'checks.identity'))):
         logger.info('Hour {0} ETL Start.'.format(os.path.splitext(infile)[0]))
@@ -72,7 +76,7 @@ def main():
             print('File written:', output_path)
 
         except (FileNotFoundError, IOError, BaseException):
-            logger.error('reading applicant nationality json file  \nTrace: {0}'.format(traceback.format_exc()))
+            logger.error('reading checks files  \nTrace: {0}'.format(traceback.format_exc()))
 
         output_path = conf.get('output', 'path')
 
