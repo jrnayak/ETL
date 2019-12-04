@@ -1,41 +1,32 @@
-function usage
-{
-      echo "Usage:"
-      echo "bash run.sh --script-name <ex: zrules.py> --conf <path/of/config/file> --master <master/url> --driver-memory <ex: 4G> --num-executors <ex: 2> --executor-cores <ex: 5> --executor-memory <ex: 10G>"
-      exit 1
-}
+#!/bin/bash
 
-SPARK_ARGS=()
-# process command line arguments
-while [ $# -gt 0 ]; do
+usage() { echo "Usage: $0 [-p <optional: no. of partitions>] [-c </path/to/config/file>]" 1>&2; exit 1; }
 
-     case $1 in
-         --script-name)
-             SCRIPT_NAME=$2
-             shift
-             ;;
-         --conf)
-             CONF=$2
-             shift
-             ;;
-         *)
-             SPARK_ARGS+=($1)
-             ;;
-     esac
-     shift
+while getopts ":p:c:" o; do
+    case "${o}" in
+        p)
+            p=${OPTARG}
+            ;;
+        c)
+            config=${OPTARG}
+            ;;
+        h)
+            usage
+            ;;
+        *)
+            usage
+            ;;
+    esac
 done
+shift $((OPTIND-1))
 
-# check arguments are set
-if [ -z "SCRIPT_NAME" ]; then
-    echo "Required command line arguments --script-name not provided .. exiting"
-    usage
-    exit 1
-fi
-if [ -z "CONF" ]; then
-    echo "Required command line arguments --conf not provided .. exiting"
-    usage
-    exit 1
+if [[ -z "${p}" ]]; then
+    p=3
 fi
 
-#spark-submit ${SPARK_ARGS[@]} --package datastax:spark-cassandra-connector:2.3.0-s_2.11 $SCRIPT_NAME --conf=$CONF
-spark-submit ${SPARK_ARGS[@]} $SCRIPT_NAME --conf=$CONF
+if [[ -z "${config}" ]]; then
+    usage
+fi
+
+echo input config file: ${config}
+spark-submit zmain.py -p ${p} -config ${config}

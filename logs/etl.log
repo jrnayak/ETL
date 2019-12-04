@@ -1,0 +1,178 @@
+[2019-12-03 21:44:49,115] - INFO - Hour 2017-07-26-05 ETL Start.
+[2019-12-03 21:45:00,166] - INFO - Hour 2017-07-26-05 ETL Complete,elapsed time: 14s.
+[2019-12-03 21:45:00,167] - INFO - Hour 2017-07-26-06 ETL Start.
+[2019-12-03 21:45:05,205] - INFO - Hour 2017-07-26-06 ETL Complete,elapsed time: 19s.
+[2019-12-03 22:39:25,300] - INFO - Hour 2017-07-26-05 ETL Start.
+[2019-12-03 22:39:37,888] - INFO - Hour 2017-07-26-05 ETL Complete,elapsed time: 15s.
+[2019-12-03 22:39:37,888] - INFO - Hour 2017-07-26-06 ETL Start.
+[2019-12-03 22:39:43,976] - INFO - Hour 2017-07-26-06 ETL Complete,elapsed time: 21s.
+[2019-12-03 22:42:53,367] - INFO - Hour 2017-07-26-05 ETL Start.
+[2019-12-03 22:43:05,890] - INFO - Hour 2017-07-26-05 ETL Complete,elapsed time: 15s.
+[2019-12-03 22:43:05,891] - INFO - Hour 2017-07-26-06 ETL Start.
+[2019-12-03 22:43:11,249] - INFO - Hour 2017-07-26-06 ETL Complete,elapsed time: 20s.
+[2019-12-03 22:43:25,791] - INFO - Hour 2017-07-26-05 ETL Start.
+[2019-12-03 22:43:42,295] - INFO - Hour 2017-07-26-05 ETL Complete,elapsed time: 19s.
+[2019-12-03 22:43:42,295] - INFO - Hour 2017-07-26-06 ETL Start.
+[2019-12-03 22:43:46,890] - INFO - Hour 2017-07-26-06 ETL Complete,elapsed time: 24s.
+[2019-12-03 22:43:56,681] - INFO - Hour 2017-07-26-05 ETL Start.
+[2019-12-03 22:44:09,758] - INFO - Hour 2017-07-26-05 ETL Complete,elapsed time: 16s.
+[2019-12-03 22:44:09,759] - INFO - Hour 2017-07-26-06 ETL Start.
+[2019-12-03 22:44:16,616] - INFO - Hour 2017-07-26-06 ETL Complete,elapsed time: 23s.
+[2019-12-03 22:58:18,486] - INFO - Hour 2017-07-26-05 ETL Start.
+[2019-12-03 22:58:32,377] - INFO - Hour 2017-07-26-05 ETL Complete,elapsed time: 17s.
+[2019-12-03 22:58:32,377] - INFO - Hour 2017-07-26-06 ETL Start.
+[2019-12-03 22:58:37,197] - INFO - Hour 2017-07-26-06 ETL Complete,elapsed time: 22s.
+[2019-12-03 22:59:16,041] - INFO - Hour 2017-07-26-05 ETL Start.
+[2019-12-03 22:59:17,469] - ERROR - reading applicant nationality json file  
+Trace: Traceback (most recent call last):
+  File "/Users/jnayak/spark/spark-2.2.3-bin-hadoop2.7/python/lib/pyspark.zip/pyspark/sql/utils.py", line 63, in deco
+    return f(*a, **kw)
+  File "/Users/jnayak/spark/spark-2.2.3-bin-hadoop2.7/python/lib/py4j-0.10.7-src.zip/py4j/protocol.py", line 328, in get_return_value
+    format(target_id, ".", name), value)
+py4j.protocol.Py4JJavaError: An error occurred while calling o41.repartition.
+: org.apache.spark.sql.AnalysisException: cannot resolve '`3`' given input columns: [applicant_id, applicant_employer];;
+'RepartitionByExpression ['3], 200
++- LogicalRDD [applicant_id#0, applicant_employer#1]
+
+	at org.apache.spark.sql.catalyst.analysis.package$AnalysisErrorAt.failAnalysis(package.scala:42)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1$$anonfun$apply$2.applyOrElse(CheckAnalysis.scala:88)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1$$anonfun$apply$2.applyOrElse(CheckAnalysis.scala:85)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$transformUp$1.apply(TreeNode.scala:289)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$transformUp$1.apply(TreeNode.scala:289)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(TreeNode.scala:70)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformUp(TreeNode.scala:288)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$transformExpressionsUp$1.apply(QueryPlan.scala:268)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$transformExpressionsUp$1.apply(QueryPlan.scala:268)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan.transformExpression$1(QueryPlan.scala:279)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan.org$apache$spark$sql$catalyst$plans$QueryPlan$$recursiveTransform$1(QueryPlan.scala:289)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$org$apache$spark$sql$catalyst$plans$QueryPlan$$recursiveTransform$1$1.apply(QueryPlan.scala:293)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)
+	at scala.collection.TraversableLike$class.map(TraversableLike.scala:234)
+	at scala.collection.AbstractTraversable.map(Traversable.scala:104)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan.org$apache$spark$sql$catalyst$plans$QueryPlan$$recursiveTransform$1(QueryPlan.scala:293)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$6.apply(QueryPlan.scala:298)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.mapProductIterator(TreeNode.scala:187)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan.mapExpressions(QueryPlan.scala:298)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan.transformExpressionsUp(QueryPlan.scala:268)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1.apply(CheckAnalysis.scala:85)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1.apply(CheckAnalysis.scala:78)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:127)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$class.checkAnalysis(CheckAnalysis.scala:78)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.checkAnalysis(Analyzer.scala:91)
+	at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:52)
+	at org.apache.spark.sql.Dataset.<init>(Dataset.scala:165)
+	at org.apache.spark.sql.Dataset.<init>(Dataset.scala:171)
+	at org.apache.spark.sql.Dataset$.apply(Dataset.scala:62)
+	at org.apache.spark.sql.Dataset.withTypedPlan(Dataset.scala:2893)
+	at org.apache.spark.sql.Dataset.repartition(Dataset.scala:2477)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jnayak/git/onfido/analytics/src/main.py", line 36, in main
+    df_emp = spark.createDataFrame(pd_emp, schema=emp_schema).repartition(num_partitions)
+  File "/Users/jnayak/spark/spark-2.2.3-bin-hadoop2.7/python/lib/pyspark.zip/pyspark/sql/dataframe.py", line 638, in repartition
+    return DataFrame(self._jdf.repartition(self._jcols(*cols)), self.sql_ctx)
+  File "/Users/jnayak/spark/spark-2.2.3-bin-hadoop2.7/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+    answer, self.gateway_client, self.target_id, self.name)
+  File "/Users/jnayak/spark/spark-2.2.3-bin-hadoop2.7/python/lib/pyspark.zip/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: "cannot resolve '`3`' given input columns: [applicant_id, applicant_employer];;\n'RepartitionByExpression ['3], 200\n+- LogicalRDD [applicant_id#0, applicant_employer#1]\n"
+
+[2019-12-03 22:59:17,470] - INFO - Hour 2017-07-26-05 ETL Complete,elapsed time: 4s.
+[2019-12-03 22:59:17,470] - INFO - Hour 2017-07-26-06 ETL Start.
+[2019-12-03 22:59:17,524] - ERROR - reading applicant nationality json file  
+Trace: Traceback (most recent call last):
+  File "/Users/jnayak/spark/spark-2.2.3-bin-hadoop2.7/python/lib/pyspark.zip/pyspark/sql/utils.py", line 63, in deco
+    return f(*a, **kw)
+  File "/Users/jnayak/spark/spark-2.2.3-bin-hadoop2.7/python/lib/py4j-0.10.7-src.zip/py4j/protocol.py", line 328, in get_return_value
+    format(target_id, ".", name), value)
+py4j.protocol.Py4JJavaError: An error occurred while calling o104.repartition.
+: org.apache.spark.sql.AnalysisException: cannot resolve '`3`' given input columns: [applicant_id, applicant_employer];;
+'RepartitionByExpression ['3], 200
++- LogicalRDD [applicant_id#5, applicant_employer#6]
+
+	at org.apache.spark.sql.catalyst.analysis.package$AnalysisErrorAt.failAnalysis(package.scala:42)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1$$anonfun$apply$2.applyOrElse(CheckAnalysis.scala:88)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1$$anonfun$apply$2.applyOrElse(CheckAnalysis.scala:85)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$transformUp$1.apply(TreeNode.scala:289)
+	at org.apache.spark.sql.catalyst.trees.TreeNode$$anonfun$transformUp$1.apply(TreeNode.scala:289)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(TreeNode.scala:70)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformUp(TreeNode.scala:288)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$transformExpressionsUp$1.apply(QueryPlan.scala:268)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$transformExpressionsUp$1.apply(QueryPlan.scala:268)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan.transformExpression$1(QueryPlan.scala:279)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan.org$apache$spark$sql$catalyst$plans$QueryPlan$$recursiveTransform$1(QueryPlan.scala:289)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$org$apache$spark$sql$catalyst$plans$QueryPlan$$recursiveTransform$1$1.apply(QueryPlan.scala:293)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:234)
+	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)
+	at scala.collection.TraversableLike$class.map(TraversableLike.scala:234)
+	at scala.collection.AbstractTraversable.map(Traversable.scala:104)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan.org$apache$spark$sql$catalyst$plans$QueryPlan$$recursiveTransform$1(QueryPlan.scala:293)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan$$anonfun$6.apply(QueryPlan.scala:298)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.mapProductIterator(TreeNode.scala:187)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan.mapExpressions(QueryPlan.scala:298)
+	at org.apache.spark.sql.catalyst.plans.QueryPlan.transformExpressionsUp(QueryPlan.scala:268)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1.apply(CheckAnalysis.scala:85)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$1.apply(CheckAnalysis.scala:78)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.foreachUp(TreeNode.scala:127)
+	at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$class.checkAnalysis(CheckAnalysis.scala:78)
+	at org.apache.spark.sql.catalyst.analysis.Analyzer.checkAnalysis(Analyzer.scala:91)
+	at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:52)
+	at org.apache.spark.sql.Dataset.<init>(Dataset.scala:165)
+	at org.apache.spark.sql.Dataset.<init>(Dataset.scala:171)
+	at org.apache.spark.sql.Dataset$.apply(Dataset.scala:62)
+	at org.apache.spark.sql.Dataset.withTypedPlan(Dataset.scala:2893)
+	at org.apache.spark.sql.Dataset.repartition(Dataset.scala:2477)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jnayak/git/onfido/analytics/src/main.py", line 36, in main
+    df_emp = spark.createDataFrame(pd_emp, schema=emp_schema).repartition(num_partitions)
+  File "/Users/jnayak/spark/spark-2.2.3-bin-hadoop2.7/python/lib/pyspark.zip/pyspark/sql/dataframe.py", line 638, in repartition
+    return DataFrame(self._jdf.repartition(self._jcols(*cols)), self.sql_ctx)
+  File "/Users/jnayak/spark/spark-2.2.3-bin-hadoop2.7/python/lib/py4j-0.10.7-src.zip/py4j/java_gateway.py", line 1257, in __call__
+    answer, self.gateway_client, self.target_id, self.name)
+  File "/Users/jnayak/spark/spark-2.2.3-bin-hadoop2.7/python/lib/pyspark.zip/pyspark/sql/utils.py", line 69, in deco
+    raise AnalysisException(s.split(': ', 1)[1], stackTrace)
+pyspark.sql.utils.AnalysisException: "cannot resolve '`3`' given input columns: [applicant_id, applicant_employer];;\n'RepartitionByExpression ['3], 200\n+- LogicalRDD [applicant_id#5, applicant_employer#6]\n"
+
+[2019-12-03 22:59:17,524] - INFO - Hour 2017-07-26-06 ETL Complete,elapsed time: 4s.
+[2019-12-03 23:00:04,868] - INFO - Hour 2017-07-26-05 ETL Start.
+[2019-12-03 23:00:17,025] - INFO - Hour 2017-07-26-05 ETL Complete,elapsed time: 14s.
+[2019-12-03 23:00:17,026] - INFO - Hour 2017-07-26-06 ETL Start.
+[2019-12-03 23:00:23,175] - INFO - Hour 2017-07-26-06 ETL Complete,elapsed time: 20s.
+[2019-12-03 23:01:18,002] - INFO - Hour 2017-07-26-05 ETL Start.
+[2019-12-03 23:01:30,753] - INFO - Hour 2017-07-26-05 ETL Complete,elapsed time: 15s.
+[2019-12-03 23:01:30,753] - INFO - Hour 2017-07-26-06 ETL Start.
+[2019-12-03 23:01:35,073] - INFO - Hour 2017-07-26-06 ETL Complete,elapsed time: 19s.
