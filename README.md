@@ -32,3 +32,4 @@ or
 `bash run.sh -c /home/user/onfido/config/onfido.cfg`
 
 
+# test
